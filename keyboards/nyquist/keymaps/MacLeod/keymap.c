@@ -63,9 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |   ½  |   %  |   '  |   €  |   !  |   *  |   !  |   @  |   {  |   }  |   &  |  =   |
+ * |   ½  |   %  |   !  |   €  |   $  |   *  |   \  |   @  |   {  |   }  |   &  |  =   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |   ¨  |   ^  |   £  |   ^  |   ;  |   "  |   $  |   (  |   )  |   <  |  >   |
+ * | Del  |   ¨  |   ^  |   £  |   ^  |   ;  |   "  |   '  |   (  |   )  |   <  |  >   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |   µ  |   ¤  |   #  |   :  |   #  |   ?  |   [  |   ]  |   |  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -74,8 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT( \
   NO_TILD, KC_EXLM, NO_QUO2, KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, NO_SLSH, NO_LPRN, NO_RPRN, NO_EQL , KC_BSPC, \
-  KC_TILD, KC_PERC, NO_QUOT, NO_EURO, KC_EXLM, NO_ASTR, KC_EXLM, NO_AT,   NO_LCBR, NO_RCBR, NO_AMPR, NO_EQL, \
-  KC_DEL,  NO_QUOT, NO_CIRC, NO_PND,  NO_CIRC, NO_SCLN, NO_QUO2, NO_DLR,  NO_LPRN, NO_RPRN, NO_LESS, NO_GRTR, \
+  KC_TILD, KC_PERC, KC_EXLM, NO_EURO, NO_DLR,  NO_ASTR, NO_BSLS, NO_AT,   NO_LCBR, NO_RCBR, NO_AMPR, NO_EQL, \
+  KC_DEL,  NO_QUOT, NO_CIRC, NO_PND,  NO_CIRC, NO_SCLN, NO_QUO2, KC_NUHS, NO_LPRN, NO_RPRN, NO_LESS, NO_GRTR, \
   _______, _______, NO_MU,   NO_BULT, KC_HASH, NO_COLN, KC_HASH, NO_QUES, NO_LBRC, NO_RBRC, NO_PIPE, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY \
 ),
@@ -84,20 +84,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |  F9  |  F10 |  F11 |  F12 |      |      |      |      |      |      | Del  |
+ * |      |  F11 |  F12 |      |      |      |      |      |      |      |      | Del  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F5  |  F6  |  F7  |  F8  |      |      |      |      |      |      |      |
+ * | Del  |  F6  |  F7  |  F8  |  F9  |  F10 |      |      |      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F1  |  F2  |  F3  |  F4  |      |      |      |      |      |      |      |
+ * |      |  F1  |  F2  |  F3  |  F4  |  F5  |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT( \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,   KC_7,     KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  XXXXXXX, KC_F9,  KC_F10,   KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL, \
-  KC_DEL,  KC_F5,  KC_F6,    KC_F7,   KC_F8,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, KC_F1,  KC_F2,    KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+  XXXXXXX, KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL, \
+  KC_DEL,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
 ),
 
