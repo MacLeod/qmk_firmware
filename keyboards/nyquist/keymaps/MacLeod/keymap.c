@@ -9,6 +9,8 @@
 #define BUILD LCTL(LSFT(KC_N))
 #define MY_BSLS RALT(KC_MINS)
 #define MY_PIPE RALT(NO_AE)
+#define RTABS LCTL(KC_PGDOWN)
+#define LTABS LCTL(KC_PGUP)
 
 extern keymap_config_t keymap_config;
 
@@ -63,21 +65,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |   ½  |   %  |   !  |   €  |   $  |   *  |   \  |   @  |   {  |   }  |   &  |  =   |
+ * |   ½  |   %  |   !  |   €  |   $  |   *  |   \  |   @  |   {  |   }  |   +  |  =   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Del  |   ¨  |   ^  |   £  |   ^  |   ;  |   "  |   '  |   (  |   )  |   <  |  >   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |   µ  |   ¤  |   #  |   :  |   #  |   ?  |   [  |   ]  |   |  |      |
+ * |      |      |   µ  |   ¤  |   #  |   :  |   #  |   ?  |   [  |   ]  |   |  |  &   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT( \
   NO_TILD, KC_EXLM, NO_QUO2, KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, NO_SLSH, NO_LPRN, NO_RPRN, NO_EQL , KC_BSPC, \
-  KC_TILD, KC_PERC, KC_EXLM, NO_EURO, NO_DLR,  NO_ASTR, NO_BSLS, NO_AT,   NO_LCBR, NO_RCBR, NO_AMPR, NO_EQL, \
+  KC_TILD, KC_PERC, KC_EXLM, NO_EURO, NO_DLR,  NO_ASTR, NO_BSLS, NO_AT,   NO_LCBR, NO_RCBR, NO_PLUS, NO_EQL, \
   KC_DEL,  NO_QUOT, NO_CIRC, NO_PND,  NO_CIRC, NO_SCLN, NO_QUO2, KC_NUHS, NO_LPRN, NO_RPRN, NO_LESS, NO_GRTR, \
-  _______, _______, NO_MU,   NO_BULT, KC_HASH, NO_COLN, KC_HASH, NO_QUES, NO_LBRC, NO_RBRC, NO_PIPE, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY \
+  _______, _______, NO_MU,   NO_BULT, KC_HASH, NO_COLN, KC_HASH, NO_QUES, NO_LBRC, NO_RBRC, NO_PIPE, NO_AMPR, \
+  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
 ),
 
 /* Raise 
@@ -95,10 +97,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT( \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,   KC_7,     KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  XXXXXXX, KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL, \
-  KC_DEL,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
+  XXXXXXX, KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, KC_DEL, \
+  KC_DEL,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______, _______, _______, _______, _______, _______, \
+  XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______, _______, _______, _______, _______, _______, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
 ),
 
 /* Adjust (Lower + Raise)
@@ -126,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |   7  |   8  |   9  |   +  |  =   |
+ * |      |      |      | LTab | RTab |      |      |   7  |   8  |   9  |   +  |  =   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |   4  |   5  |   6  |   -  |  *   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -137,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_NUMPAD] =  LAYOUT( \
   XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,   KC_7,     KC_8, KC_9,    KC_0,    _______, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8, KC_9,    NO_PLUS, NO_EQL,  \
+  XXXXXXX, XXXXXXX, XXXXXXX, LTABS,   RTABS,   XXXXXXX, XXXXXXX, KC_7,    KC_8, KC_9,    NO_PLUS, NO_EQL,  \
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_4,    KC_5, KC_6,    NO_MINS, NO_ASTR, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2, KC_3,    NO_BSLS, _______, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, _______, KC_0, XXXXXXX, XXXXXXX, XXXXXXX \
