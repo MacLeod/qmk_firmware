@@ -11,6 +11,9 @@
 #define MY_PIPE RALT(NO_AE)
 #define RTABS LCTL(KC_PGDOWN)
 #define LTABS LCTL(KC_PGUP)
+#define CLTABS LCTL(KC_W)
+#define NEWTABS LCTL(KC_T)
+#define RETABS LCTL(S(KC_T))
 
 extern keymap_config_t keymap_config;
 
@@ -128,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      | LTab | RTab |      |      |   7  |   8  |   9  |   +  |  =   |
+ * |      |      | ClTa | LTab | RTab | NewTa|      |   7  |   8  |   9  |   +  |  =   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |   4  |   5  |   6  |   -  |  *   |
+ * |      |      |      |      |      | ReTa |      |   4  |   5  |   6  |   -  |  *   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |   1  |   2  |   3  |   \  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -139,8 +142,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_NUMPAD] =  LAYOUT( \
   XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,   KC_7,     KC_8, KC_9,    KC_0,    _______, \
-  XXXXXXX, XXXXXXX, XXXXXXX, LTABS,   RTABS,   XXXXXXX, XXXXXXX, KC_7,    KC_8, KC_9,    NO_PLUS, NO_EQL,  \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_4,    KC_5, KC_6,    NO_MINS, NO_ASTR, \
+  XXXXXXX, XXXXXXX, CLTABS,  LTABS,   RTABS,   NEWTABS, XXXXXXX, KC_7,    KC_8, KC_9,    NO_PLUS, NO_EQL,  \
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RETABS,  XXXXXXX, KC_4,    KC_5, KC_6,    NO_MINS, NO_ASTR, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2, KC_3,    NO_BSLS, _______, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, _______, KC_0, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
