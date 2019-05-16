@@ -27,6 +27,7 @@ extern keymap_config_t keymap_config;
 #define _NUMPAD 3
 #define _ADJUST 16
 #define _MOUSE 18
+#define _GAME 36
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -35,6 +36,8 @@ enum custom_keycodes {
   NUMPAD,
   ADJUST,
   MOUSE,
+  GAME,
+  GAME_EXIT,
 };
 
 // Fillers to make layering more clear
@@ -63,6 +66,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,             KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  NO_MINS, MOUSE , \
   ADJUST,              KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_ENT,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
 ),
+[_GAME] = LAYOUT( \
+  KC_GRV,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
+  KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    NO_AA, \
+  KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NO_OSLH, NO_AE, \
+  KC_LSFT,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  NO_MINS, GAME_EXIT , \
+  ADJUST,    KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_ENT,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+),
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
@@ -82,10 +92,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_DEL,  KC_PERC, KC_EXLM, NO_EURO, NO_DLR,   NO_ASTR, NO_BSLS, NO_QUES, NO_LPRN, NO_RPRN, NO_PLUS, NO_EQL, \
   KC_TILD, NO_QUOT, NO_CIRC, NO_PND,  NO_CIRC,  NO_SCLN, KC_NUHS, NO_QUO2, NO_LCBR, NO_RCBR, NO_LESS, NO_GRTR, \
   _______, _______, NO_MU,   NO_BULT, NO_SCLN,  NO_COLN, KC_HASH, NO_AT,   NO_LBRC, NO_RBRC, NO_AMPR, NO_PIPE, \
-  _______, _______, _______, _______, _______,  _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
+  GAME,    _______, _______, _______, _______,  _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
 ),
 
-/* Raise 
+/* Raise
  * ,-----------------------------------------------------------------------------------.
  * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
@@ -226,6 +236,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_on(_MOUSE);
       } else {
         layer_off(_MOUSE);
+      }
+      return false;
+      break;
+    case GAME:
+      if (record->event.pressed) {
+        layer_on(_GAME);
+      //} else {
+      //  layer_off(_MOUSE);
+      }
+      return false;
+      break;
+    case GAME_EXIT:
+      if (record->event.pressed) {
+        layer_on(_QWERTY);
+      //} else {
+      //  layer_off(_MOUSE);
       }
       return false;
       break;
